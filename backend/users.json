@@ -1,6 +1,10 @@
 [
   {
-    "username": "sergiofags",
-    "password": "1234"
+    "name": "sérgio",
+    "lastName": "fagundes",
+    "username": "sergiofagundes",
+    "email": "sergio@gmail.com",
+    "password": "123456",
+    "confirmPassword": "123456"
   }
 ]

@@ -15,14 +15,22 @@ const writeUserData = async (data) => {
 };
 
 export async function POST(req) {
-    const { username, password } = await req.json();
+    const { name, lastName, username, email, password, confirmPassword } = await req.json();
     const users = await readUserData();
 
     if (users.find(user => user.username === username)) {
         return new Response(JSON.stringify({ message: 'Usuário já existe' }), { status: 400 });
     }
 
-    users.push({ username, password });
+    if (password != confirmPassword) {
+        return new Response(JSON.stringify({ message: 'Senhas são diferentes' }), { status: 400 });
+    }
+
+    if (users.find(user => user.email === email)) {
+        return new Response(JSON.stringify({ message: 'Email já cadastrado' }), { status: 400 });
+    }
+
+    users.push({ name, lastName, username, email, password, confirmPassword });
     await writeUserData(users);
 
     return new Response(JSON.stringify({ message: 'Registrado com sucesso' }), { status: 201 });
