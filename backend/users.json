@@ -4,7 +4,13 @@
     "lastName": "fagundes",
     "username": "sergiofagundes",
     "email": "sergio@gmail.com",
-    "password": "123456",
-    "confirmPassword": "123456"
+    "password": "123456"
+  },
+  {
+    "name": "Giovanna",
+    "lastName": "Custódio",
+    "username": "gihcustodio",
+    "email": "giovanna@gmail.com",
+    "password": "123456"
   }
 ]

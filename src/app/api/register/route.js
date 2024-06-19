@@ -19,19 +19,19 @@ export async function POST(req) {
     const users = await readUserData();
 
     if (users.find(user => user.username === username)) {
-        return new Response(JSON.stringify({ message: 'Usuário já existe' }), { status: 400 });
+        return new Response(JSON.stringify({ message: 'User already exists' }), { status: 400 });
     }
 
     if (password != confirmPassword) {
-        return new Response(JSON.stringify({ message: 'Senhas são diferentes' }), { status: 400 });
+        return new Response(JSON.stringify({ message: 'Passwords are different' }), { status: 400 });
     }
 
     if (users.find(user => user.email === email)) {
-        return new Response(JSON.stringify({ message: 'Email já cadastrado' }), { status: 400 });
+        return new Response(JSON.stringify({ message: 'E-mail already registered' }), { status: 400 });
     }
 
-    users.push({ name, lastName, username, email, password, confirmPassword });
+    users.push({ name, lastName, username, email, password });
     await writeUserData(users);
 
-    return new Response(JSON.stringify({ message: 'Registrado com sucesso' }), { status: 201 });
+    return new Response(JSON.stringify({ message: 'Successfully registered' }), { status: 201 });
 }
